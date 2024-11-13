@@ -35,7 +35,7 @@ ngrok http --domain casual-renewing-reptile.ngrok-free.app 3000
 
 ## Deployage
 
-I use #nest so I made a systemd service file at `~/.config/systemd/user/kreva.service`
+I use [#nest](https://www.hackclub.app/) so I made a systemd service file at `~/.config/systemd/user/kreva.service`
 
 ```ini
 [Unit]
