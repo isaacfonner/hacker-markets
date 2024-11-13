@@ -1,7 +1,7 @@
 <h1 align="center">Kreva</h1>
 
 <p align="center">
-  <img width="460" height="460" src="https://github.com/kcoderhtml/kreva/raw/master/.github/images/logo.png">
+  <img width="460" height="460" src="https://github.com/kcoderhtml/kreva/raw/master/.github/images/logo-rounded.png">
 </p>
 
 Kreva is a simple slackbot to auto add me to new channels in the [Hackclub](https://hackclub.com/slack/) slack
