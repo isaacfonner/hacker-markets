@@ -41,6 +41,15 @@ const slackApp = new SlackApp({
 });
 const slackClient = slackApp.client;
 
+const userSlackApp = new SlackApp({
+	env: {
+		SLACK_BOT_TOKEN: process.env.SLACK_USER_TOKEN,
+		SLACK_SIGNING_SECRET: process.env.SLACK_SIGNING_SECRET,
+		SLACK_LOGGING_LEVEL: "INFO",
+	},
+});
+const userSlackClient = userSlackApp.client;
+
 console.log(`⚒️  Loading ${Object.entries(features).length} features...`);
 for (const [feature, handler] of Object.entries(features)) {
 	console.log(`📦 ${feature} loaded`);
@@ -76,4 +85,4 @@ console.log(quip());
 
 console.log("\n----------------------------------\n");
 
-export { slackApp, slackClient, version, name, environment };
+export { slackApp, slackClient, userSlackClient, version, name, environment };
