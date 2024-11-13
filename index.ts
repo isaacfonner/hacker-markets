@@ -16,10 +16,18 @@ console.log("🔑 Loading environment variables...");
 if (
 	!process.env.SLACK_BOT_TOKEN ||
 	!process.env.SLACK_SIGNING_SECRET ||
+	!process.env.SLACK_USER_TOKEN ||
 	!process.env.ADMINS
 ) {
+	const missingEnvVars = [
+		!process.env.SLACK_BOT_TOKEN && "SLACK_BOT_TOKEN",
+		!process.env.SLACK_SIGNING_SECRET && "SLACK_SIGNING_SECRET",
+		!process.env.SLACK_USER_TOKEN && "SLACK_USER_TOKEN",
+		!process.env.ADMINS && "ADMINS",
+	].filter(Boolean);
+
 	throw new Error(
-		"Missing required environment variables: SLACK_BOT_TOKEN SLACK_SIGNING_SECRET or ADMINS",
+		`Missing required environment variables: ${missingEnvVars.join(", ")}`,
 	);
 }
 
