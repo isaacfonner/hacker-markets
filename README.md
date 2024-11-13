@@ -39,7 +39,7 @@ I use #nest so I made a systemd service file at `~/.config/systemd/user/kreva.se
 
 ```ini
 [Unit]
-Description=arcade commit helper
+Description=slack channel stalker
 DefaultDependencies=no
 After=network-online.target
 
