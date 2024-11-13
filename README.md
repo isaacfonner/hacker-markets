@@ -10,7 +10,7 @@ Kreva is a simple slackbot to auto add me to new channels in the [Hackclub](http
 
 ![gif of the program in action](https://github.com/kcoderhtml/kreva/raw/master/.github/images/out.gif)
 
-# Usage
+## Usage
 
 Create a slack app as per the [manifest.yaml](manifest.yaml) and an env as below  
 
@@ -32,6 +32,30 @@ then start an ngrok
 ```bash
 ngrok http --domain casual-renewing-reptile.ngrok-free.app 3000
 ```
+
+## Deployage
+
+I use #nest so I made a systemd service file at `~/.config/systemd/user/kreva.service`
+
+```ini
+[Unit]
+Description=arcade commit helper
+DefaultDependencies=no
+After=network-online.target
+
+[Service]
+Type=exec
+WorkingDirectory=/home/kierank/kreva
+ExecStart=bun run index.ts
+TimeoutStartSec=0
+Restart=on-failure
+RestartSec=1s
+
+[Install]
+WantedBy=default.target
+```
+
+After a quick `systemctl --user enable kreva` and `systemctl --user start kreva` it's of to the races!
 
 ## License
 
