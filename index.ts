@@ -59,7 +59,7 @@ for (const [feature, handler] of Object.entries(features)) {
 }
 
 export default {
-	port: 3000,
+	port: process.env.PORT || 3000,
 	async fetch(request: Request) {
 		const url = new URL(request.url);
 		const path = url.pathname;
