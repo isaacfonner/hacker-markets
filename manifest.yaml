@@ -9,6 +9,9 @@ features:
     always_online: true
 oauth_config:
   scopes:
+    user:
+      - channels:write
+      - chat:write
     bot:
       - channels:read
       - chat:write
