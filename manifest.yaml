@@ -13,12 +13,14 @@ oauth_config:
       - channels:write
       - chat:write
     bot:
+      - channels:join
       - channels:read
       - chat:write
       - chat:write.public
-      - channels:join
       - users.profile:read
       - users:read
+      - channels:write.invites
+      - groups:write.invites
 settings:
   event_subscriptions:
     request_url: https://casual-renewing-reptile.ngrok-free.app/slack
