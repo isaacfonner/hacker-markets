@@ -6,11 +6,6 @@ async function listener() {
 		await userSlackClient.conversations.join({
 			channel: payload.channel.id,
 		});
-
-		await userSlackClient.chat.postMessage({
-			channel: payload.channel.id,
-			text: `Hi <@${payload.channel.creator}> and <#${payload.channel.id}>!`,
-		});
 	});
 }
 
