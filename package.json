@@ -1,11 +1,10 @@
 {
-	"name": "kreva",
+	"name": "hacker-markets",
 	"version": "0.1.0",
 	"module": "index.ts",
 	"type": "module",
 	"scripts": {
-		"dev": "bun run --watch index.ts",
-		"ngrok": "ngrok http 3000 --domain=casual-renewing-reptile.ngrok-free.app"
+		"dev": "bun run --watch index.ts"
 	},
 	"devDependencies": {
 		"@types/bun": "latest"
