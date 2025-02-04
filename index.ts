@@ -1,10 +1,9 @@
 import { SlackApp } from "slack-edge";
 
-import * as features from "./features/index";
+import * as features from "./src/modules/index";
 
 const { version, name } = require("./package.json");
 const environment = process.env.NODE_ENV;
-import quip from "./quip";
 
 console.log(
 	`----------------------------------\n${name} server\n----------------------------------\n`,
@@ -80,9 +79,5 @@ export default {
 console.log(
 	`🚀 Server Started in ${Bun.nanoseconds() / 1000000} milliseconds on version: ${version}!\n\n----------------------------------\n`,
 );
-
-console.log(quip());
-
-console.log("\n----------------------------------\n");
 
 export { slackApp, slackClient, userSlackClient, version, name, environment };

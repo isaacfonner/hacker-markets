@@ -1,11 +1,11 @@
 display_information:
-  name: Kreva
-  description: She comes to haunt your channels (nicely)
+  name: Hacker Market Dev
+  description: Test bot for Hacker Market
   background_color: "#000000"
-  long_description: Kreva is a small, mischievous Whisperwyrm known for her vibrant blue scales and delicate, starlit wings. Unlike other creatures of her kind, Kreva thrives on social connection, flitting between realms to bring warmth and camaraderie wherever she goes. She has an innate ability to detect newly formed Slack channels, where she immediately appears to say “hi” and ensure no one feels isolated.
+  long_description: Hacker Market is a bot for Hack Club's next big YSWS!
 features:
   bot_user:
-    display_name: kreva
+    display_name: hackermarket
     always_online: true
 oauth_config:
   scopes:
@@ -23,7 +23,7 @@ oauth_config:
       - groups:write.invites
 settings:
   event_subscriptions:
-    request_url: https://casual-renewing-reptile.ngrok-free.app/slack
+    request_url: https://rationally-liked-cattle.ngrok-free.app/slack
     bot_events:
       - channel_created
   org_deploy_enabled: false
