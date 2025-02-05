@@ -1,10 +1,21 @@
 import { SlackApp } from "slack-edge";
-
-import * as features from "./features/index";
+import * as modules from "./src/modules/index";
+import { join } from "path";
+import { readFileSync } from "fs";
 
 const { version, name } = require("./package.json");
 const environment = process.env.NODE_ENV;
-import quip from "./quip";
+
+// Tell Bun it needs to look somewhere else than default for the environment files
+const envPath = join(__dirname, "..", ".env");
+const envConfig = readFileSync(envPath, "utf-8");
+envConfig.split("\n").forEach(line => {
+    const [key, value] = line.split("=");
+    if (key && value) {
+        process.env[key.trim()] = value.trim();
+    }
+});
+
 
 console.log(
 	`----------------------------------\n${name} server\n----------------------------------\n`,
@@ -50,8 +61,8 @@ const userSlackApp = new SlackApp({
 });
 const userSlackClient = userSlackApp.client;
 
-console.log(`⚒️  Loading ${Object.entries(features).length} features...`);
-for (const [feature, handler] of Object.entries(features)) {
+console.log(`⚒️  Loading ${Object.entries(modules).length} features...`);
+for (const [feature, handler] of Object.entries(modules)) {
 	console.log(`📦 ${feature} loaded`);
 	if (typeof handler === "function") {
 		handler();
@@ -59,7 +70,7 @@ for (const [feature, handler] of Object.entries(features)) {
 }
 
 export default {
-	port: process.env.PORT || 3000,
+	port: process.env.SLACK_API_ENDPOINT_PORT || 3000,
 	async fetch(request: Request) {
 		const url = new URL(request.url);
 		const path = url.pathname;
@@ -69,7 +80,7 @@ export default {
 				return new Response(`Hello World from ${name}@${version}`);
 			case "/health":
 				return new Response("OK");
-			case "/slack":
+			case "/slack/events":
 				return slackApp.run(request);
 			default:
 				return new Response("404 Not Found", { status: 404 });
@@ -80,9 +91,5 @@ export default {
 console.log(
 	`🚀 Server Started in ${Bun.nanoseconds() / 1000000} milliseconds on version: ${version}!\n\n----------------------------------\n`,
 );
-
-console.log(quip());
-
-console.log("\n----------------------------------\n");
 
 export { slackApp, slackClient, userSlackClient, version, name, environment };

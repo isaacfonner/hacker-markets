@@ -1,0 +1,31 @@
+display_information:
+  name: Hacker Market Dev
+  description: Test bot for Hacker Market
+  background_color: "#000000"
+  long_description: Hacker Market is a bot for Hack Club's next big YSWS!
+features:
+  bot_user:
+    display_name: hackermarket
+    always_online: true
+oauth_config:
+  scopes:
+    user:
+      - channels:write
+      - chat:write
+    bot:
+      - channels:join
+      - channels:read
+      - chat:write
+      - chat:write.public
+      - users.profile:read
+      - users:read
+      - channels:write.invites
+      - groups:write.invites
+settings:
+  event_subscriptions:
+    request_url: https://rationally-liked-cattle.ngrok-free.app/slack/events
+    bot_events:
+      - channel_created
+  org_deploy_enabled: false
+  socket_mode_enabled: false
+  token_rotation_enabled: false
